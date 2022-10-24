@@ -1,6 +1,15 @@
-var button = document.getElementById("enter");
-var input = document.getElementById("userinput");
-var ul = document.querySelector("ul");
+const button = document.getElementById("enter");
+const input = document.getElementById("userinput");
+const ul = document.querySelector("ul");
+let li = document.querySelectorAll("li");
+
+if (li.length > 0) {
+	li.forEach((item, index) => {
+		item.addEventListener("click", (e) => {
+			item.classList.toggle("done");
+		});
+	});
+}
 
 function inputLength() {
 	return input.value.length;
@@ -10,6 +19,9 @@ function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
 	ul.appendChild(li);
+	li.addEventListener("click", (e) => {
+		li.classList.toggle("done");
+	});
 	input.value = "";
 }
 
