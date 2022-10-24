@@ -16,12 +16,26 @@ function inputLength() {
 }
 
 function createListElement() {
+	// create li element
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
 	ul.appendChild(li);
+
+	// add listener to newly created li element
 	li.addEventListener("click", (e) => {
 		li.classList.toggle("done");
 	});
+
+	// create span element for li deletion
+	const mySpan = document.createElement("span");
+	mySpan.innerHTML = "X";
+	li.appendChild(mySpan);
+
+	// create listener for span delete action
+	mySpan.addEventListener("click", (e) => {
+		ul.removeChild(li);
+	});
+
 	input.value = "";
 }
 
